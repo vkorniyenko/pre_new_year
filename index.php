@@ -2,10 +2,16 @@
 session_start();
 
 //--log in form handler------------
-$login = $_POST['login'];
-if(!empty($login)){
-    $_SESSION['login']=$login;
-}
+    $login = $_POST['login'];
+    if(!empty($login)){
+	$_SESSION['login']=$login;
+    }
+//---------------------------------
+//----Exit-------------------------
+    if(isset($_GET['action'])){
+	session_destroy();
+	header('Location:'.$_SERVER['PHP_SELF']);
+    }
 //---------------------------------
 ?>
 <!DOCTYPE html>
@@ -24,6 +30,7 @@ if(!empty($login)){
 	</form>
 	<?php else: ?>
 	<?= $_SESSION['login'] ?>
+	<a href="?action=exit">Log out</a>
 	<?php endif; ?>
     </body>
 </html>
