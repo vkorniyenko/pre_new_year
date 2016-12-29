@@ -8,8 +8,13 @@ session_start();
         <title></title>
     </head>
     <body>
-	<?php if(empty($_SESSION['login'])):?>
-	
+	<?php if(empty($_SESSION['login'])): ?>
+	<form method="post">
+	    <label>Login:
+		<input type="text" name="login"/>
+	    </label>
+	    <input type="submit" value="log in"/>
+	</form>
 	<?php else: ?>
 	<?php endif; ?>
     </body>
